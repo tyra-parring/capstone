@@ -4,7 +4,9 @@ import ProductsView from '@/views/ProductsView.vue'
 import AdminView from '@/views/AdminView.vue'
 import ContactView from '@/views/ContactView.vue'
 import ProductView from '@/views/ProductView.vue'
-
+import CheckoutView from '@/views/CheckoutView.vue'
+import UserView from '@/views/UserView.vue'
+import UserPfView from '@/views/UserPfView.vue'
 
 const routes = [
   {
@@ -46,19 +48,24 @@ const routes = [
     component: ContactView
   },
   {
-    path: '/admi n',
-    name: 'AdminView',
+    path: '/login',
+    name: 'LoginView',
     component: AdminView
   },
   {
-    path: '/',
-    name: 'AdminView',
-    component: AdminView
+    path: '/checkout',
+    name: 'CheckoutView',
+    component: CheckoutView
   },
   {
-    path: '/admin',
-    name: 'AdminView',
-    component: AdminView
+    path: '/user',
+    name: 'UserView',
+    component: UserView
+  },
+  {
+    path: '/profile',
+    name: 'UserPfView',
+    component: UserPfView
   },
 
 ]

@@ -1,19 +1,17 @@
 <template>
   <div class="footer-container">
-            &copy; Tyra Parring {{ date() }}
+            &copy; Tyra Parring {{ currentYear }}
   </div>
 </template>
 
 <script>
 export default {
-    data() {
-        return {}
-    },
-    methods: {
-        date() {
-            return new Date().getFullYear();
-        }
+    name: 'FooterComp',
+  computed: {
+    currentYear() {
+      return new Date().getFullYear();
     }
+  }
 }
 </script>
 
