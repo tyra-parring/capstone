@@ -1,8 +1,6 @@
 <template>
-  <div>
-        <footer>
+  <div class="footer-container">
             &copy; Tyra Parring {{ date() }}
-        </footer>
   </div>
 </template>
 

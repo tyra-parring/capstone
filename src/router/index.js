@@ -31,6 +31,11 @@ const routes = [
     component: ProductView
   },
   {
+    path: '/product/:id',
+    name: 'product',
+    component: ProductView,
+  },
+  {
     path: '/admin',
     name: 'admin',
     component: AdminView
@@ -41,12 +46,7 @@ const routes = [
     component: ContactView
   },
   {
-    path: '/product/:id',
-    name: 'product',
-    component: ProductView,
-  },
-  {
-    path: '/admin',
+    path: '/admi n',
     name: 'AdminView',
     component: AdminView
   },
