@@ -46,10 +46,21 @@ const routes = [
     component: ProductView,
   },
   {
-    path: '/admin/products',
+    path: '/admin',
     name: 'AdminView',
     component: AdminView
-  }
+  },
+  {
+    path: '/',
+    name: 'AdminView',
+    component: AdminView
+  },
+  {
+    path: '/admin',
+    name: 'AdminView',
+    component: AdminView
+  },
+
 ]
 
 const router = createRouter({
