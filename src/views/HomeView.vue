@@ -1,8 +1,21 @@
 <template>
-  <div>
-    <NavbarComp/>
+  <div class="home-view">
+    <header class="header">
+      <h1>Luxurious Jewelry</h1>
+      <p>Discover our exclusive collection of fine jewelry</p>
+    </header>
 
-    <FooterComp/>
+    <section class="grid-section">
+      <div class="grid-container">
+        <div v-for="product in products" :key="product.id" class="card">
+          <img :src="product.image" :alt="product.name" class="card-img" />
+          <div class="card-content">
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.description }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
