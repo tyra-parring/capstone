@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
       <div class="container-fluid">
         <router-link class="navbar-brand" to="/">Jewelry Ecommerce</router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,22 +60,24 @@
   </script>
   
   <style scoped>
+   @import '~font-awesome/css/font-awesome.min.css';
+   
   .navbar {
     padding: 1rem 2rem;
   }
   
   .navbar-brand {
     font-weight: bold;
-    color: #333;
+    color: #ffffff;
   }
   
   .nav-link {
-    color: #666;
+    color: #ffffff;
     transition: color 0.2s ease;
   }
   
   .nav-link:hover {
-    color: #333;
+    color: #ccc;
   }
   
   .navbar-toggler-icon {
@@ -84,7 +86,7 @@
   
   @media (max-width: 991px) {
     .navbar-collapse {
-      background-color: #f9f9f9;
+      background-color: #000;
       padding: 1rem;
     }
   }
