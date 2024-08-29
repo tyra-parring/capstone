@@ -136,6 +136,7 @@ export default {
   background-color: #554c4c;
   padding: 2rem;
   text-align: center;
+  margin-bottom: 30px;
 }
 
 .grid-container {
