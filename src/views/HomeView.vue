@@ -133,10 +133,14 @@ export default {
 }
 
 .another-section {
-  background-color: #554c4c;
+  /* background: rgba(85, 76, 76, 0.5); */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); 
   padding: 2rem;
   text-align: center;
   margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
 }
 
 .grid-container {
@@ -185,12 +189,33 @@ export default {
 
 .banner-section {
   height: 100px; 
-  width: 100vw;
+  width: 98.8vw;
   overflow: hidden;
-  background-color: #000;
+  /* background: rgba(0, 0, 0, 0.5); */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.another-section::before, .banner-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(85, 76, 76, 0.5); 
+  backdrop-filter: blur(100px);
+  -webkit-backdrop-filter: blur(10px); 
+  z-index: 0; 
+}
+
+.another-section > *, .banner-section > * {
+  position: relative; 
+  z-index: 1; 
 }
 
 .banner-container {
