@@ -7,7 +7,7 @@ import NavbarComp from './components/NavbarComp.vue'
 import FooterComp from './components/FooterComp.vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.js'
-// import './'
+import '../styles.css'
 
 createApp(App).use(store).use(router).component('NavbarComp', NavbarComp)
 .component('FooterComp', FooterComp).mount('#app')

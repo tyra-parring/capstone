@@ -60,8 +60,6 @@
   </script>
   
   <style scoped>
-   @import '~font-awesome/css/font-awesome.min.css';
-   
   .navbar {
     padding: 1rem 2rem;
   }
