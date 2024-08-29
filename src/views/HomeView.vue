@@ -1,9 +1,36 @@
 <template>
   <div class="home-view">
-    <header class="header">
+    <section class="section">
       <h1>Luxurious Jewelry</h1>
       <p>Discover our exclusive collection of fine jewelry</p>
-    </header>
+    </section>
+
+    <section class="another-section">
+      <div>
+        <h1>Welcome To Our Jewelry Store</h1>
+          <p>Explore our collection of exquisite jewelry pieces, carefully crafted to make you shine.</p>
+          <button type="button" class="btn btn-outline-danger">Discover More</button>
+      </div>
+    </section>
+
+    <section class="banner-section">
+      <div class="banner-container">
+        <div class="banner-loop">
+          <span class="animated-banner">Shop Now</span>
+          <span class="animated-banner">Shop Now</span>
+          <span class="animated-banner">Shop Now</span>
+          <span class="animated-banner">Shop Now</span>
+          <span class="animated-banner">Shop Now</span>
+          <span class="animated-banner">Shop Now</span>
+          <span class="animated-banner">Shop Now</span>
+          <span class="animated-banner">Shop Now</span>
+          <span class="animated-banner">Shop Now</span>
+          <span class="animated-banner">Shop Now</span>
+          <span class="animated-banner">Shop Now</span>
+          <span class="animated-banner">Shop Now</span>
+        </div>
+      </div>
+    </section>
 
     <section class="grid-section">
       <div class="grid-container">
@@ -32,32 +59,83 @@ export default {
 <style scoped>
 .home-view {
   font-family: 'Playfair Display', serif;
-  background-color: #f8f9fa;
-  color: #343a40;
+  background-color: #000000f1;
+  color: #ffffff;
 }
 
-.header {
+.section {
   text-align: center;
   padding: 2rem 0;
   background-color: #fff8e7;
   margin-bottom: 2rem;
+  background: url(https://tyra-parring.github.io/host-/image/6263491-uhd_3840_2160_25fps-ezgif.com-optimize.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.header h1 {
+.section h1 {
   font-size: 3rem;
-  color: #d4af37; 
   margin-bottom: 0.5rem;
+  overflow: hidden; 
+  white-space: nowrap;
+  animation: typing 5s steps(30) forwards;
+  position: relative;
 }
 
-.header p {
+.section p {
   font-size: 1.5rem;
-  color: #555;
+  color: #ffffff;
+  overflow: hidden;
+  animation: typing 5s steps(30) forwards;
+  position: relative;
+}
+
+.section h1::after, .section p::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background-color: #ffffff; 
+  animation: cursor-blink 1s infinite; 
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes cursor-blink {
+  from {
+    opacity: 1;
+    width: 2px
+  }
+  to {
+    opacity: 0;
+    width:2px
+  }
 }
 
 .grid-section {
   display: flex;
   justify-content: center;
   padding: 2rem;
+}
+
+.another-section {
+  background-color: #554c4c;
+  padding: 2rem;
+  text-align: center;
 }
 
 .grid-container {
@@ -103,6 +181,45 @@ export default {
   font-size: 1rem;
   color: #777;
 }
+
+.banner-section {
+  height: 100px; 
+  width: 100vw;
+  overflow: hidden;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-container {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+.banner-loop {
+  display: flex;
+  animation: scroll 15s linear infinite;
+}
+
+.animated-banner {
+  padding: 0 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffffff; 
+  white-space: nowrap;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
 
 @keyframes fadeIn {
   from {
