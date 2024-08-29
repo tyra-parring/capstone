@@ -183,10 +183,10 @@ export default {
 }
 
 .banner-section {
-  height: 100px; /* Adjust the height as needed */
+  height: 100px; 
   width: 100vw;
   overflow: hidden;
-  background-color: #000; /* Background color for better visibility */
+  background-color: #000;
   display: flex;
   align-items: center;
   justify-content: center;
