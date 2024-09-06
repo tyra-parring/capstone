@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Home</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Method</th>
+                <th>Path</th>
+                <th>Descriptions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>GET</td>
+                <td>/</td>
+                <td>Home Page</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Users Table</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Method</th>
+                <th>Path</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>GET</td>
+                <td>/</td>
+                <td>Get all users</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/users/:id</td>
+                <td>Gets single user by userID</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>/register</td>
+                <td>Adds a one user</td>
+            </tr>
+            <tr>
+                <td>PATCH/PUT</td>
+                <td>/update/:id</td>
+                <td>Edits user details by userID</td>
+            </tr>
+            <tr>
+                <td>DELETE</td>
+                <td>/delete/:id</td>
+                <td>Delete user by userID</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>/login</td>
+                <td>Signs a user into their account</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Products Table</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Method</th>
+                <th>Path</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>GET</td>
+                <td>/</td>
+                <td>Get all items</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/:id</td>
+                <td>Gets single item by itemID</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>/items/add</td>
+                <td>Adds a single item</td>
+            </tr>
+            <tr>
+                <td>PATCH</td>
+                <td>/update/:id</td>
+                <td>Edits and updates a single items details by itemID</td>
+            </tr>
+            <tr>
+                <td>DELETE</td>
+                <td>/delete/:id</td>
+                <td>Delete item by itemID</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
