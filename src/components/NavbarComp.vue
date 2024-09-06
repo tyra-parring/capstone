@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <router-link class="nav-link active" to="/" aria-current="page">Home</router-link>
+              <router-link class="nav-link" to="/" aria-current="page">Home</router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/about">About Us</router-link>
@@ -26,15 +26,20 @@
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <router-link class="nav-link" to="/login" v-if="!isLoggedIn">
-                <i class="fas fa-user"></i> Login / Sign Up
+                <font-awesome-icon icon="fa-solid fa-user"/> 
+                  <span class="login-signup-links">
+                    <span v-if="!isLoggedIn">Login</span>
+                    <span v-if="!isLoggedIn" class="mx-2">|</span>
+                    <span v-if="!isLoggedIn">Sign Up</span>
+                  </span>
               </router-link>
               <router-link class="nav-link" to="/profile" v-if="isLoggedIn">
-                <i class="fas fa-user"></i> Profile
+                <font-awesome-icon icon="fa-solid fa-user" /> Profile
               </router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/checkout">
-                <i class="fas fa-shopping-cart"></i> Checkout
+                <font-awesome-icon icon="fa-solid fa-shopping-cart" /> Checkout
               </router-link>
             </li>
           </ul>
@@ -80,7 +85,24 @@
   
   .navbar-toggler-icon {
     font-size: 1.5rem;
+    filter: invert(1);
   }
+
+  .router-link-active {
+  color: #ffffff !important; 
+  }
+
+  .login-signup-links {
+      font-size: 16px;
+      font-weight: bold;
+      color: #ffffff;
+    }
+    .login-signup-links span {
+      margin-right: 10px;
+    }
+    .login-signup-links .mx-2 {
+      margin: 0 10px;
+    }
   
   @media (max-width: 991px) {
     .navbar-collapse {
