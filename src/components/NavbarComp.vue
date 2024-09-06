@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-black">
       <div class="container-fluid">
         <router-link class="navbar-brand" to="/">Jewelry Ecommerce</router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,6 +15,9 @@
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/products">Products</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/products">Admin</router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/contact">Contact Us</router-link>
