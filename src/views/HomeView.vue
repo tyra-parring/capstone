@@ -1,11 +1,11 @@
 <template>
   <div class="home-view">
-    <section class="section">
+    <section class="section" data-aos="fade-up" data-aos-duration="1000">
       <h1>Luxurious Jewelry</h1>
       <p>Discover our exclusive collection of fine jewelry</p>
     </section>
 
-    <section class="another-section">
+    <section class="another-section" data-aos="fade-up" data-aos-duration="1500">
       <div>
         <h1>Welcome To Our Jewelry Store</h1>
           <p>Explore our collection of exquisite jewelry pieces, carefully crafted to make you shine.</p>
@@ -28,11 +28,15 @@
           <span class="animated-banner">Shop Now</span>
           <span class="animated-banner">Shop Now</span>
           <span class="animated-banner">Shop Now</span>
+          <span class="animated-banner">Shop Now</span>
+          <span class="animated-banner">Shop Now</span>
+          <span class="animated-banner">Shop Now</span>
+          <span class="animated-banner">Shop Now</span>
         </div>
       </div>
     </section>
 
-    <section class="grid-section">
+    <section class="grid-section" data-aos="fade-up" data-aos-duration="2500">
       <div class="grid-container">
         <div v-for="product in products" :key="product.id" class="card">
           <img :src="product.image" :alt="product.name" class="card-img" />
@@ -43,16 +47,34 @@
         </div>
       </div>
     </section>
+
+    <section class="call-to-action-section" data-aos="fade-up" data-aos-duration="3000">
+      <div class="call-to-action-container">
+        <h2>Get Exclusive Offers and Discounts</h2>
+        <p>Sign up for our newsletter to stay updated on our latest collections and promotions</p>
+        <button type="button" class="btn btn-outline-danger">Sign Up Now</button>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default {
   name: 'HomeView',
   components: {
   
-  }
+  },
+  mounted() {
+    AOS.init({
+      offset: 200,
+      duration: 600,
+      easing: 'ease-in-sine',
+      delay: 100,
+    });
+  },
 }
 </script>
 
@@ -141,6 +163,7 @@ export default {
   margin-bottom: 30px;
   position: relative;
   overflow: hidden;
+  font-size: 1.5rem;
 }
 
 .grid-container {
@@ -207,7 +230,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(85, 76, 76, 0.5); 
+  /* background: rgba(85, 76, 76, 0.5);  */
   backdrop-filter: blur(100px);
   -webkit-backdrop-filter: blur(10px); 
   z-index: 0; 
@@ -261,6 +284,47 @@ export default {
 .fade-in {
   animation: fadeIn 1s ease-in-out;
 }
+
+.call-to-action-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .call-to-action-container {
+    max-width: 400px;
+    text-align: center;
+  }
+
+  .call-to-action-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .call-to-action-container p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .call-to-action-container button {
+    cursor: pointer;
+  }
+
+  .call-to-action-container button:hover {
+    background-color: #c82333;
+  }
+
+  @media (max-width: 768px) {
+    .call-to-action-section {
+      padding: 1rem;
+    }
+    .call-to-action-container {
+      max-width: 300px;
+    }
+  }
 
 @media (max-width: 768px) {
   .grid-container {
