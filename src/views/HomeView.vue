@@ -5,7 +5,7 @@
       <p>Discover our exclusive collection of fine jewelry</p>
     </section>
 
-    <section class="another-section" data-aos="fade-up" data-aos-duration="1500">
+    <section class="another-section" data-aos="fade-up" data-aos-duration="1400">
       <div>
         <h1>Welcome To Our Jewelry Store</h1>
           <p>Explore our collection of exquisite jewelry pieces, carefully crafted to make you shine.</p>
@@ -36,7 +36,7 @@
       </div>
     </section>
 
-    <section class="grid-section" data-aos="fade-up" data-aos-duration="2500">
+    <section class="grid-section" data-aos="fade-up" data-aos-duration="1400">
       <div class="grid-container">
         <div v-for="product in products" :key="product.id" class="card">
           <img :src="product.image" :alt="product.name" class="card-img" />
@@ -48,7 +48,7 @@
       </div>
     </section>
 
-    <section class="call-to-action-section" data-aos="fade-up" data-aos-duration="3000">
+    <section class="call-to-action-section" data-aos="fade-up" data-aos-duration="1400">
       <div class="call-to-action-container">
         <h2>Get Exclusive Offers and Discounts</h2>
         <p>Sign up for our newsletter to stay updated on our latest collections and promotions</p>
