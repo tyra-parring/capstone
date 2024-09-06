@@ -11,7 +11,9 @@
       <p>
         Our journey began with a passion for jewelry-making and a commitment to excellence. Our team of skilled artisans and designers work tirelessly to craft each piece with precision and attention to detail. We're dedicated to creating jewelry that not only sparkles but also tells a story.
       </p>
-      <img src="our-story-image.jpg" alt="Our Story Image">
+      <img src="https://tyra-parring.github.io/host-/image/pexels-tima-miroshnichenko-6263155.jpg" alt="Our Story Image">
+      <img src="https://tyra-parring.github.io/host-/image/pexels-tima-miroshnichenko-6263068.jpg" alt="Our Story Image">
+      <img src="https://tyra-parring.github.io/host-/image/pexels-tima-miroshnichenko-6262840.jpg" alt="Our Story Image">
     </section>
     <section class="our-values">
       <h2>Our Values</h2>
@@ -41,7 +43,14 @@
             Jane is a skilled designer and artisan with years of experience in jewelry-making. She brings her creativity and attention to detail to every piece she crafts.
           </p>
         </div>
-        <!-- Add more team members here -->
+        <div class="team-member">
+          <img src="team-member-3.jpg" alt="Team Member 3">
+          <h3>John Smith</h3>
+          <p>Jewelry Maker & Craftsman</p>
+          <p>
+            John is a skilled jewelry maker and craftsman with a passion for creating unique and intricate pieces. He combines traditional techniques with modern designs to produce truly exceptional jewelry.
+          </p>
+        </div>
       </div>
     </section>
     <section class="testimonials">
@@ -51,15 +60,14 @@
           <p>
             "I'm absolutely thrilled with my new necklace! The quality is exceptional, and the design is stunning. I've received so many compliments already!"
           </p>
-          <p>Emily R.</p>
+          <p>Anastascia R.</p>
         </div>
         <div class="testimonial">
           <p>
             "I was blown away by the customer service at Silver Diamond Jewelry. They went above and beyond to ensure I was happy with my purchase."
           </p>
-          <p>David K.</p>
+          <p>Josh K.</p>
         </div>
-        <!-- Add more testimonials here -->
       </div>
     </section>
   </div>
@@ -73,14 +81,26 @@ export default {
 
 <style scoped>
 .about-page {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 20px;
   text-align: center;
+  background-image: url(https://tyra-parring.github.io/host-/image/smoke-texture-wallpaper-dark-background-min.jpg);
+  background-size: cover;
+  background-attachment: scroll;
+  background-position: center;
+  color: white;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0); /* Adjust the opacity to your liking */
+  z-index: 1; /* Make sure the overlay is on top of the background image */
 }
 
 .about-header {
-  background-image: linear-gradient(to bottom, #f7f7f7, #fff);
   padding: 40px;
   text-align: center;
 }
@@ -133,5 +153,9 @@ export default {
   width: 100%;
   height: 150px;
   /* object-fit */
+}
+
+.testimonials {
+  margin-bottom: 2em;
 }
 </style>
