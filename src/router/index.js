@@ -8,6 +8,7 @@ import CheckoutView from '@/views/CheckoutView.vue'
 import UserView from '@/views/UserView.vue'
 import UserPfView from '@/views/UserPfView.vue'
 import LoginView from '@/views/LoginView.vue'
+import SignupView from '@/views/SignupView.vue'
 
 const routes = [
   {
@@ -47,6 +48,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: LoginView
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: SignupView
   },
   {
     path: '/checkout',

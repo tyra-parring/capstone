@@ -17,12 +17,9 @@
               <router-link class="nav-link" to="/products">Products</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/products">Admin</router-link>
-            </li>
-            <li class="nav-item">
               <router-link class="nav-link" to="/contact">Contact Us</router-link>
             </li>
-            <li class="nav-item" v-if="isAdmin">
+            <li class="nav-item" >
               <router-link class="nav-link" to="/admin">Admin</router-link>
             </li>
           </ul>
@@ -32,8 +29,8 @@
                 <font-awesome-icon icon="fa-solid fa-user"/> 
                   <span class="login-signup-links">
                     <span v-if="!isLoggedIn">Login</span>
-                    <span v-if="!isLoggedIn" class="mx-2">|</span>
-                    <span v-if="!isLoggedIn">Sign Up</span>
+                    <span v-if="!isLoggedIn">|</span>
+                    <router-link to="/signup">Sign Up</router-link>
                   </span>
               </router-link>
               <router-link class="nav-link" to="/profile" v-if="isLoggedIn">
@@ -47,7 +44,7 @@
             </li>
           </ul>
           <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control me-2" type="search" v-model="searchQuery" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-danger" type="submit">Search</button>
           </form>
         </div>
@@ -56,15 +53,75 @@
   </template>
   
   <script>
-  export default {
-    name: 'NavbarComp',
-    data() {
-      return {
-        isLoggedIn: false,
-        isAdmin: false
+import axios from 'axios';
+
+export default {
+  name: 'NavbarComp',
+  data() {
+    return {
+      isLoggedIn: false, 
+      isAdmin: false,
+      searchQuery: '',
+      sortBy: 'price-asc',
+      products: []
+    }
+  },
+  mounted() {
+    this.fetchProducts()
+    this.checkLoginStatus()
+  },
+  methods: {
+    fetchProducts() {
+      axios.get('https://capstone-wqf7.onrender.com', {
+        params: {
+          sort_by: this.sortBy
+        }
+      })
+        .then(response => {
+          this.products = response.data
+        })
+        .catch(error => {
+          console.error(error)
+        })
+    },
+    sortByPriceAsc(products) {
+      return [...products].sort((a, b) => a.price - b.price)
+    },
+    sortByPriceDesc(products) {
+      return [...products].sort((a, b) => b.price - a.price)
+    },
+    checkLoginStatus() {
+      axios.get('https://capstone-wqf7.onrender.com')
+        .then(response => {
+          if (response.data.isLoggedIn) {
+            this.isLoggedIn = true
+            this.isAdmin = response.data.isAdmin 
+          }
+        })
+        .catch(error => {
+          console.error(error)
+        })
+    }
+  },
+  computed: {
+    filteredProducts() {
+      const filtered = this.products.filter(product => {
+        const searchQuery = this.searchQuery.toLowerCase()
+        const prodName = product.name.toLowerCase()
+        const category = product.Categories ? product.Categories.toLowerCase() : ''
+        return prodName.includes(searchQuery) || category.includes(searchQuery)
+      })
+
+      if (this.sortBy === 'price-asc') {
+        return this.sortByPriceAsc(filtered)
+      } else if (this.sortBy === 'price-desc') {
+        return this.sortByPriceDesc(filtered)
       }
+
+      return filtered
     }
   }
+}
   </script>
   
   <style scoped>
@@ -105,6 +162,10 @@
     }
     .login-signup-links .mx-2 {
       margin: 0 10px;
+    }
+    .login-signup-links a {
+      color: #ffffff; 
+      text-decoration: none;
     }
   
   @media (max-width: 991px) {
