@@ -3,7 +3,11 @@ import { getProductsDb, getProductDb,addproductDb, deleteProductDb, updateProduc
 const getProducts = async (req, res) => {
     try {
       const products = await getProductsDb();
-      res.json(products);
+      if (!products || products.length === 0) {
+        res.status(404).json({ message: 'No products found' });
+      } else {
+        res.json(products);
+      } 
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Error fetching items' });

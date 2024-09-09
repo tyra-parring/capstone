@@ -9,7 +9,7 @@ userRouter.get('/:id', getUser)
 userRouter.post('/register', insertUser)
 userRouter.patch('/update/:id', updateUser)
 userRouter.delete('/delete/:id', deleteUser)
-userRouter.post('/login', loginUser, checkUser, verifyAToken)
+userRouter.post('/login', loginUser)
 
 
 export{userRouter}
