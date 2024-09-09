@@ -12,8 +12,8 @@
         Our journey began with a passion for jewelry-making and a commitment to excellence. Our team of skilled artisans and designers work tirelessly to craft each piece with precision and attention to detail. We're dedicated to creating jewelry that not only sparkles but also tells a story.
       </p>
       <img src="https://tyra-parring.github.io/host-/image/pexels-tima-miroshnichenko-6263155.jpg" alt="Our Story Image">
-      <img src="https://tyra-parring.github.io/host-/image/pexels-tima-miroshnichenko-6263068.jpg" alt="Our Story Image">
-      <img src="https://tyra-parring.github.io/host-/image/pexels-tima-miroshnichenko-6262840.jpg" alt="Our Story Image">
+      <img src="https://tyra-parring.github.io/host-/image/pexels-tima-miroshnichenko-6263068.jpg" class="img-1" alt="Our Story Image">
+      <img src="https://tyra-parring.github.io/host-/image/pexels-tima-miroshnichenko-6262840.jpg" class="img-1" alt="Our Story Image">
     </section>
     <section class="our-values">
       <h2>Our Values</h2>
@@ -28,24 +28,24 @@
       <h2>Meet Our Team</h2>
       <div class="team-members">
         <div class="team-member">
-          <img src="team-member-1.jpg" alt="Team Member 1">
-          <h3>John Doe</h3>
+          <img src="https://tyra-parring.github.io/host-/image/7c7781a9-4dd5-4602-b25d-9bc98bbe035a.png" alt="Team Member 1">
+          <h3>Henry Cevil</h3>
           <p>Founder & CEO</p>
           <p>
-            John is a jewelry enthusiast with a passion for creating unique and exquisite pieces. He oversees the design and production process to ensure every piece meets our high standards.
+            Henry is a jewelry enthusiast with a passion for creating unique and exquisite pieces. He oversees the design and production process to ensure every piece meets our high standards.
           </p>
         </div>
         <div class="team-member">
-          <img src="team-member-2.jpg" alt="Team Member 2">
-          <h3>Jane Doe</h3>
+          <img src="https://tyra-parring.github.io/host-/image/270a2d0b-1dd3-4940-a922-4478a6d879af.png" alt="Team Member 2">
+          <h3>Jane Skyyes</h3>
           <p>Designer & Artisan</p>
           <p>
             Jane is a skilled designer and artisan with years of experience in jewelry-making. She brings her creativity and attention to detail to every piece she crafts.
           </p>
         </div>
         <div class="team-member">
-          <img src="team-member-3.jpg" alt="Team Member 3">
-          <h3>John Smith</h3>
+          <img src="https://tyra-parring.github.io/host-/image/19b769ea-e4cf-4178-8448-8f1e54b8bb66.png" alt="Team Member 3">
+          <h3>John DeVito</h3>
           <p>Jewelry Maker & Craftsman</p>
           <p>
             John is a skilled jewelry maker and craftsman with a passion for creating unique and intricate pieces. He combines traditional techniques with modern designs to produce truly exceptional jewelry.
@@ -96,8 +96,8 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0); /* Adjust the opacity to your liking */
-  z-index: 1; /* Make sure the overlay is on top of the background image */
+  background-color: rgba(0, 0, 0, 0); 
+  z-index: 1; 
 }
 
 .about-header {
@@ -118,6 +118,10 @@ export default {
   object-fit: cover;
   border-radius: 10px;
   margin-top: 20px;
+}
+
+.img-1{
+  object-position: 0 70% ;
 }
 
 .our-values {
@@ -152,10 +156,10 @@ export default {
 .team-member img {
   width: 100%;
   height: 150px;
-  /* object-fit */
+  object-fit: contain
 }
 
 .testimonials {
-  margin-bottom: 2em;
+  padding-bottom: 1.2em;
 }
 </style>
