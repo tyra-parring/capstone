@@ -1,4 +1,4 @@
-import { createStore } from 'vuex'
+import { createStore } from 'vuex';
 import axios from 'axios';
 
 const hostedData = "https://capstone-wqf7.onrender.com/";
@@ -53,7 +53,7 @@ export default createStore({
       try {
         const response = await axios.get(`${hostedData}products`);
         if (response.status === 200) {
-          commit('SET_PRODUCTS', response.data.results);
+          commit('SET_PRODUCTS', response.data);
         }
       } catch (error) {
         commit('SET_ERROR', error.message);
@@ -68,7 +68,7 @@ export default createStore({
       try {
         const response = await axios.get(`${hostedData}product/${prodID}`);
         if (response.status === 200) {
-          commit('SET_PRODUCT', response.data.result);
+          commit('SET_PRODUCT', response.data);
         }
       } catch (error) {
         commit('SET_ERROR', error.message);
@@ -83,7 +83,7 @@ export default createStore({
       try {
         const response = await axios.get(`${hostedData}users`);
         if (response.status === 200) {
-          commit('SET_USERS', response.data.results);
+          commit('SET_USERS', response.data);
         }
       } catch (error) {
         commit('SET_ERROR', error.message);
@@ -98,7 +98,7 @@ export default createStore({
       try {
         const response = await axios.get(`${hostedData}user/${userID}`);
         if (response.status === 200) {
-          commit('SET_USER', response.data.result);
+          commit('SET_USER', response.data);
         }
       } catch (error) {
         commit('SET_ERROR', error.message);
@@ -122,7 +122,7 @@ export default createStore({
       try {
         const response = await axios.post(`${hostedData}user/register`, payload);
         if (response.status === 200) {
-          commit('SET_USER', response.data.result);
+          commit('SET_USER', response.data);
         }
       } catch (error) {
         commit('SET_ERROR', error.message);
@@ -132,10 +132,8 @@ export default createStore({
 
     async addProduct({ dispatch }, payload) {
       try {
-        const response = await axios.post(`${hostedData}product/add`, payload);
-        if (response.status === 200) {
-          dispatch('fetchProducts');
-        }
+        await axios.post(`${hostedData}product/add`, payload);
+        dispatch('fetchProducts');
       } catch (error) {
         console.error("Error adding product:", error);
       }
@@ -143,10 +141,8 @@ export default createStore({
 
     async updateProduct({ dispatch }, payload) {
       try {
-        const response = await axios.patch(`${hostedData}product/update/${payload.prodID}`, payload);
-        if (response.status === 200) {
-          dispatch('fetchProducts');
-        }
+        await axios.patch(`${hostedData}product/update/${payload.prodID}`, payload);
+        dispatch('fetchProducts');
       } catch (error) {
         console.error("Error updating product:", error);
       }
@@ -154,10 +150,8 @@ export default createStore({
 
     async deleteProduct({ dispatch }, prodID) {
       try {
-        const response = await axios.delete(`${hostedData}product/delete/${prodID}`);
-        if (response.status === 200) {
-          dispatch('fetchProducts');
-        }
+        await axios.delete(`${hostedData}product/delete/${prodID}`);
+        dispatch('fetchProducts');
       } catch (error) {
         console.error("Error deleting product:", error);
       }
