@@ -64,19 +64,36 @@ export default {
     },
   },
   methods: {
+    // async fetchProducts() {
+    //   this.loading = true;
+    //   try {
+    //     const response = await axios.get('https://capstone-wqf7.onrender.com/products'); 
+    //     console.log('API response:', response);
+    //     this.products = response.data;
+    //   } catch (error) {
+    //     console.error('Error fetching products:', error);
+    //     this.error = error.message;
+    //   } finally {
+    //     this.loading = false;
+    //   }
+    // },
     async fetchProducts() {
-      this.loading = true;
-      try {
-        const response = await axios.get('https://capstone-wqf7.onrender.com/products'); 
-        console.log('API response:', response);
-        this.products = response.data;
-      } catch (error) {
-        console.error('Error fetching products:', error);
-        this.error = error.message;
-      } finally {
-        this.loading = false;
-      }
-    },
+  this.loading = true;
+  try {
+    console.log('Fetching products...');
+    const response = await axios.get('https://capstone-wqf7.onrender.com/products');
+    console.log('API response:', response); 
+    this.products = response.data;
+    console.log('Products Array:', this.products); 
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    this.error = error.message;
+  } finally {
+    this.loading = false;
+    console.log('Loading finished');
+  }
+}
+
   },
   created() {
     this.fetchProducts();
