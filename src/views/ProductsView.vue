@@ -41,6 +41,7 @@
 
 <script>
 import axios from 'axios';
+import AOS from 'aos';
 
 export default {
   data() {
@@ -93,18 +94,33 @@ export default {
     console.log('Loading finished');
   }
 }
-
   },
   created() {
     this.fetchProducts();
   },
+  mounted() {
+  AOS.init({
+    duration: 1100, 
+    once: true,   
+  });
+}
+
 };
 </script>
 
 <style scoped>
 .products {
   padding: 20px;
-  background-color: #f9f9f9;
+  background-image: url(https://tyra-parring.github.io/host-/image/black-smoke-background-border-textured-wallpaper-high-resolution-min.jpg);
+  background-size: cover;
+  background-attachment: scroll; 
+  height: 100vh; 
+  overflow-y: auto;
+}
+
+.products h1 {
+  text-align: center;
+  color: whitesmoke;
 }
 
 .product-grid {
@@ -116,12 +132,13 @@ export default {
 .product-category {
   margin: 20px;
   padding: 20px;
-  background-color: #fff;
   width: 100%;
 }
 
 .product-category h2 {
   margin-top: 0;
+  text-align: center;
+  color: whitesmoke;
 }
 
 .product-cards {
@@ -135,8 +152,9 @@ export default {
   padding: 20px;
   background-color: #fff;
   border: 1px solid #ddd;
+  border-radius: .6em;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: calc(25% - 20px);
+  width: calc(35% - 20px);
 }
 
 .product-image {
@@ -148,6 +166,17 @@ export default {
 
 .product-card h3 {
   margin-top: 0;
+  text-align: center;
+}
+
+.product-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px; 
+}
+
+.product-actions button {
+  margin: 0 20px; 
 }
 
 /* From Uiverse.io by KINGFRESS */ 
@@ -277,15 +306,21 @@ button:hover span:not(:nth-child(6)) {
   }
 }
 
+@media (max-width: 1024px) {
+  .product-card {
+    width: calc(65% - 20px); 
+  }
+}
+
 @media (max-width: 768px) {
   .product-card {
-    width: calc(50% - 20px);
+    width: calc(95% - 10px);
   }
 }
 
 @media (max-width: 480px) {
   .product-card {
-    width: 100%;
+    width: calc(50% - 20px); 
   }
 }
 </style>
