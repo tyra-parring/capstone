@@ -48,10 +48,25 @@ export default createStore({
     },
   },
   actions: {
+    // async fetchProducts({ commit }) {
+    //   commit('SET_LOADING', true);
+    //   try {
+    //     const response = await axios.get(`${hostedData}products`);
+    //     if (response.status === 200) {
+    //       commit('SET_PRODUCTS', response.data);
+    //     }
+    //   } catch (error) {
+    //     commit('SET_ERROR', error.message);
+    //     console.error("Error fetching products:", error);
+    //   } finally {
+    //     commit('SET_LOADING', false);
+    //   }
+    // },
     async fetchProducts({ commit }) {
       commit('SET_LOADING', true);
       try {
-        const response = await axios.get(`${hostedData}products`);
+        const timestamp = new Date().getTime();
+        const response = await axios.get(`${hostedData}products?_=${timestamp}`);
         if (response.status === 200) {
           commit('SET_PRODUCTS', response.data);
         }
