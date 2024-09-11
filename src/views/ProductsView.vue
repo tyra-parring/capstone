@@ -16,6 +16,9 @@
                 <button @click="addToCart(product)">
                   <span class="text">Add to Cart</span>
                 </button>
+                <router-link to="/product/:id" class="router-link">
+                  <span class="text">View More</span>
+                </router-link>
               </div>
             </div>
           </div>
@@ -152,131 +155,36 @@ export default {
   margin: 0 20px; 
 }
 
-/* From Uiverse.io by KINGFRESS */ 
 button {
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  color: white;
-  background-color: #000000;
+  background-color: #000000; 
+  color: #ffffff;
+  border: none;
+  border-radius: .6rem;
   padding: 0.9em;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #b8860b; 
+  color: #ffffff; 
+}
+
+.router-link {
+  background-color: #000000; 
+  color: #ffffff;
   border: none;
   border-radius: .6rem;
-  position: relative;
+  padding: 0.9em;
   cursor: pointer;
-  overflow: hidden;
+  text-decoration: none; 
+  transition: background-color 0.3s ease-in-out;
 }
 
-button span:not(:nth-child(6)) {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  height: 30px;
-  width: 30px;
-  background-color: #b8860b;
-  border-radius: 50%;
-  transition: .6s ease;
-}
-
-button span:nth-child(6) {
-  position: relative;
-}
-
-button span:nth-child(1) {
-  transform: translate(-3.3em, -4em);
-}
-
-button span:nth-child(2) {
-  transform: translate(-6em, 1.3em);
-}
-
-button span:nth-child(3) {
-  transform: translate(-.2em, 1.8em);
-}
-
-button span:nth-child(4) {
-  transform: translate(3.5em, 1.4em);
-}
-
-button span:nth-child(5) {
-  transform: translate(3.5em, -3.8em);
-}
-
-button:hover span:not(:nth-child(6)) {
-  transform: translate(-50%, -50%) scale(4);
-  transition: 1.5s ease;
-}
-  
-/* From Uiverse.io by vinodjangid07 */ 
-.cartBtn {
-  width: 155px;
-  height: 50px;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  color: white;
-  font-weight: 500;
-  position: relative;
-  background-color: rgb(0, 0, 0);
-  box-shadow: 0 20px 30px -7px rgba(27, 27, 27, 0.219);
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-  overflow: hidden;
-  border-radius: .6rem;
-}
-
-.cart {
-  z-index: 2;
-}
-
-.cartBtn:active {
-  transform: scale(0.96);
-}
-
-.product {
-  position: absolute;
-  width: 12px;
-  border-radius: 3px;
-  content: "";
-  left: 23px;
-  bottom: 23px;
-  opacity: 0;
-  z-index: 1;
-  fill: #b8860b;
-}
-
-.cartBtn:hover .product {
-  animation: slide-in-top 1.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
-
-@keyframes slide-in-top {
-  0% {
-    transform: translateY(-30px);
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateY(0) rotate(-90deg);
-    opacity: 1;
-  }
-}
-
-.cartBtn:hover .cart {
-  animation: slide-in-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
-
-@keyframes slide-in-left {
-  0% {
-    transform: translateX(-10px);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
+.router-link:hover {
+  background-color: #b8860b; 
+  color: #ffffff; 
+  text-decoration: none; 
 }
 
 @media (max-width: 1024px) {
