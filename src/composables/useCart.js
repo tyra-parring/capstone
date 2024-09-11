@@ -1,8 +1,7 @@
 import { ref } from 'vue';
-import { useToast } from 'vue3-toastify';
+import { toast } from 'vue3-toastify';
 
 const cart = ref([]);
-const toast = useToast();
 
 export function useCart() {
   const addToCart = (product) => {
