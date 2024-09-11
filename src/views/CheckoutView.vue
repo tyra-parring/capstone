@@ -3,13 +3,35 @@
     <h1>Checkout</h1>
     <div v-if="cart.length === 0">Your cart is empty.</div>
     <div v-else>
-      <div v-for="item in cart" :key="item.prodID" class="checkout-item">
-        <img :src="item.image_url || 'https://via.placeholder.com/150'" alt="Product Image" class="checkout-image"/>
-        <h3>{{ item.name }}</h3>
-        <p>Quantity: {{ item.quantity }}</p>
-        <p>Price: R{{ item.price }}</p>
-        <button @click="removeFromCart(item)">Remove</button>
-      </div>
+      <table class="checkout-table">
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in cart" :key="item.prodID">
+            <td>{{ item.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>R{{ item.price }}</td>
+            <td>R{{ item.price * item.quantity }}</td>
+            <td>
+              <button @click="removeFromCart(item)">Remove</button>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="3">Total:</th>
+            <th>R{{ totalCartPrice }}</th>
+            <th></th>
+          </tr>
+        </tfoot>
+      </table>
     </div>
   </div>
 </template>
@@ -20,28 +42,25 @@ import { useCart } from '@/composables/useCart';
 export default {
   setup() {
     const { cart, removeFromCart } = useCart(); 
-    return { cart, removeFromCart };
+    const totalCartPrice = cart.value.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    return { cart, removeFromCart, totalCartPrice };
   },
 };
 </script>
 
 <style scoped>
-.checkout-item {
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  border-bottom: 1px solid #ccc;
+.checkout-table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.checkout-image {
-  width: 100px;
-  height: 100px;
-  margin-right: 20px;
-  border-radius: 10px;
+th, td {
+  padding: 10px;
+  border: 1px solid #ccc;
 }
 
-h3 {
-  margin-bottom: 10px;
+th {
+  background-color: #f0f0f0;
 }
 
 button {
