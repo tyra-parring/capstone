@@ -1,6 +1,8 @@
 import { ref } from 'vue';
+import { useToast } from 'vue-toastification';
 
 const cart = ref([]);
+const toast = useToast();
 
 export function useCart() {
   const addToCart = (product) => {
@@ -10,6 +12,7 @@ export function useCart() {
     } else {
       cart.value.push({ ...product, quantity: 1 });
     }
+    toast.success('Item added to cart!');
   };
 
   const removeFromCart = (product) => {
@@ -17,8 +20,9 @@ export function useCart() {
   };
 
   return {
-    cart,             
-    addToCart,        
-    removeFromCart, 
+    cart,
+    addToCart,
+    removeFromCart,
   };
 }
+
