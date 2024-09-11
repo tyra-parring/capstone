@@ -38,12 +38,15 @@
 
 <script>
 import { useCart } from '@/composables/useCart'; 
+import { computed } from 'vue';
 
 export default {
   setup() {
     const { cart, removeFromCart } = useCart(); 
-    const totalCartPrice = cart.value.reduce((acc, item) => acc + item.price * item.quantity, 0);
-    return { cart, removeFromCart, totalCartPrice };
+    const totalCartPrice = computed(() => {
+      return cart.value.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    })
+      return { cart, removeFromCart, totalCartPrice };
   },
 };
 </script>
@@ -64,7 +67,7 @@ th {
 }
 
 button {
-  background-color: #4CAF50;
+  background-color: #000000;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -73,7 +76,7 @@ button {
 }
 
 button:hover {
-  background-color: #3e8e41;
+  background-color: #b8860b;
 }
 
 .empty-cart {
@@ -82,5 +85,29 @@ button:hover {
   color: #666;
   padding: 20px;
   text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .checkout-table {
+    font-size: 14px;
+  }
+  th, td {
+    padding: 5px;
+  }
+  button {
+    padding: 5px 10px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .checkout-table {
+    font-size: 12px;
+  }
+  th, td {
+    padding: 3px;
+  }
+  button {
+    padding: 3px 5px;
+  }
 }
 </style>
