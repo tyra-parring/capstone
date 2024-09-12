@@ -1,7 +1,9 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-light bg-black">
       <div class="container-fluid">
-        <router-link class="navbar-brand" to="/">Jewelry Ecommerce</router-link>
+        <router-link class="navbar-brand" to="/">
+          <img src="https://tyra-parring.github.io/host-/image/tuxedo%20taylor%20(1).png" alt="Jewelry Ecommerce" style="height: 100px; width: 100px;"/>
+        </router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -20,7 +22,10 @@
               <router-link class="nav-link" to="/contact">Contact Us</router-link>
             </li>
             <li class="nav-item" >
-              <router-link class="nav-link" to="/admin">Admin</router-link>
+              <router-link class="nav-link" to="/admin" v-if="isAdmin">
+                Admin
+              </router-link>
+              <!-- <span v-else>No admin access</span> -->
             </li>
           </ul>
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -28,7 +33,7 @@
               <router-link class="nav-link" to="/login" v-if="!isLoggedIn">
                 <font-awesome-icon icon="fa-solid fa-user"/> 
                   <span class="login-signup-links">
-                    <span v-if="!isLoggedIn">Login</span>
+                    <span v-if="!isLoggedIn">  Login</span>
                     <span v-if="!isLoggedIn">|</span>
                     <router-link to="/signup">Sign Up</router-link>
                   </span>
@@ -39,7 +44,7 @@
             </li>
             <li class="nav-item">
               <router-link class="nav-link" to="/checkout">
-                <font-awesome-icon icon="fa-solid fa-shopping-cart" /> Checkout
+                <font-awesome-icon icon="fa-solid fa-shopping-cart"/> Checkout
               </router-link>
             </li>
           </ul>
@@ -126,7 +131,7 @@ export default {
   
   <style scoped>
   .navbar {
-    padding: 1rem 2rem;
+    padding: .6rem;
   }
   
   .navbar-brand {
@@ -140,7 +145,7 @@ export default {
   }
   
   .nav-link:hover {
-    color: #ccc;
+    color: #b8860b;
   }
   
   .navbar-toggler-icon {
@@ -149,7 +154,7 @@ export default {
   }
 
   .router-link-active {
-  color: #ffffff !important; 
+  color: #b8860b !important; 
   }
 
   .login-signup-links {
@@ -167,11 +172,21 @@ export default {
       color: #ffffff; 
       text-decoration: none;
     }
+
+    .btn-outline-danger {
+    border-color: #b8860b;
+    color: #b8860b;
+  }
+
+  .btn-outline-danger:hover {
+    background-color: #b8860b;
+    border-color: #b8860b;
+  }
   
   @media (max-width: 991px) {
     .navbar-collapse {
       background-color: #000;
-      padding: 1rem;
+      padding: .6rem;
     }
   }
   </style>

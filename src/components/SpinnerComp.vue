@@ -1,28 +1,40 @@
 <template>
-    <div class="spinner">
-  <div></div>   
-  <div></div>    
-  <div></div>    
-  <div></div>    
-  <div></div>    
-  <div></div>    
-  <div></div>    
-  <div></div>    
-  <div></div>    
-  <div></div>    
-</div>
+  <div class="spinner">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 </template>
+
 <script>
 export default {
-    name: 'SpinnerComp'
+  name: 'SpinnerComp',
+  data() {
+        return {
+        loading: true
+        }
+    },
+    mounted() {
+        setTimeout(() => {
+        this.loading = false
+        }, 1000)
+    }
 }
 </script>
 <style scoped>
     /* From Uiverse.io by PriyanshuGupta28 */ 
-.spinner {
-  position: absolute;
+    .spinner {
+  position: relative; 
   width: 9px;
   height: 9px;
+  animation: spinner-fzua35 1s infinite ease; 
 }
 
 .spinner div {
@@ -31,7 +43,6 @@ export default {
   height: 150%;
   background: #000000;
   transform: rotate(calc(var(--rotation) * 1deg)) translate(0, calc(var(--translation) * 1%));
-  animation: spinner-fzua35 1s calc(var(--delay) * 1s) infinite ease;
 }
 
 .spinner div:nth-child(1) {
@@ -95,12 +106,11 @@ export default {
 }
 
 @keyframes spinner-fzua35 {
-  0%, 10%, 20%, 30%, 50%, 60%, 70%, 80%, 90%, 100% {
-    transform: rotate(calc(var(--rotation) * 1deg)) translate(0, calc(var(--translation) * 1%));
+  0% {
+    transform: rotate(0deg) translate(0, 0);
   }
-
-  50% {
-    transform: rotate(calc(var(--rotation) * 1deg)) translate(0, calc(var(--translation) * 1.5%));
+  100% {
+    transform: rotate(360deg) translate(0, 0);
   }
 }
 </style>

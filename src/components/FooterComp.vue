@@ -106,7 +106,7 @@ export default {
 }
 
 .quick-link:hover {
-  color: #ccc;
+  color: #b8860b;
   transition: color 0.2s ease-in-out;
 }
 
