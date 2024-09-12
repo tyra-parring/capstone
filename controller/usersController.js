@@ -40,24 +40,24 @@ const getUser =  async(req,res)=>{
 // };
 
 const insertUser = async (req, res) => {
-    try {
-      console.log('Received request body:', req.body);
-      const { firstName, lastName, userAge, gender, userRole, userEmail, userPass, userProfile } = req.body[0];
-      console.log('Extracted user data:', { firstName, lastName, userAge, gender, userRole, userEmail, userPass, userProfile });
-      const hashedPass = await hash(userPass, 10);
-      console.log('Hashed password:', hashedPass);
-      const result = await insertUserDb(firstName, lastName, userAge, gender, userRole, userEmail, hashedPass, userProfile);
-      console.log('Result of insertUserDb:', result);
-      if (result.affectedRows === 1) {
-        res.json({ message: 'User created successfully' });
-      } else {
-        res.status(500).json({ message: 'Error creating user' });
-      }
-    } catch (error) {
-      console.error('Error creating user:', error);
+  try {
+    console.log('Received request body:', req.body);
+    const { firstName, lastName, userAge, gender, userRole, userEmail, userPass, userProfile } = req.body;
+    console.log('Extracted user data:', { firstName, lastName, userAge, gender, userRole, userEmail, userPass, userProfile });
+    const hashedPass = await hash(userPass, 10);
+    console.log('Hashed password:', hashedPass);
+    const result = await insertUserDb(firstName, lastName, userAge, gender, userRole, userEmail, hashedPass, userProfile);
+    console.log('Result of insertUserDb:', result);
+    if (result) {
+      res.json({ message: 'User created successfully' });
+    } else {
       res.status(500).json({ message: 'Error creating user' });
     }
-  };
+  } catch (error) {
+    console.error('Error creating user:', error);
+    res.status(500).json({ message: 'Error creating user' });
+  }
+};
 
 const deleteUser = async (req, res) => {
   try {
