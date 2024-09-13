@@ -8,6 +8,6 @@ productRouter.get('/', getProducts)
 productRouter.get('/:id', getProduct)
 productRouter.post('/:id', addProduct)
 productRouter.delete('/:id', deleteProduct)
-productRouter.patch('/update/:id', updateProduct);
+productRouter.patch('/:id', updateProduct);
 
 export {productRouter}
