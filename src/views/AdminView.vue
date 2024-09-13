@@ -187,109 +187,119 @@ export default {
     };
   },
   methods: {
-    fetchProducts() {
-      axios.get('https://capstone-wqf7.onrender.com/products')
-        .then(response => {
-          this.products = response.data;
-        })
-        .catch(error => {
-          console.error('Error fetching products:', error);
-        });
-    },
-    fetchUsers() {
-      axios.get('https://capstone-wqf7.onrender.com/users')
-        .then(response => {
-          this.users = response.data;
-        })
-        .catch(error => {
-          console.error('Error fetching users:', error);
-        });
-    },
-    updateProduct(prodID) {
-      const product = this.products.find(p => p.prodID === prodID);
-      axios.put(`https://capstone-wqf7.onrender.com/products/update/${prodID}`, product)
-        .then(() => {
-          alert('Product updated successfully!');
-        })
-        .catch(error => {
-          console.error('Error updating product:', error);
-        });
-    },
-    openUpdateModal(user) {
-      this.selectedUser = { ...user };
-      this.showUpdateModal = true;
-    },
-    closeUpdateModal() {
-      this.showUpdateModal = false;
-      this.selectedUser = null;
-    },
-    submitUpdateUser() {
-      axios.put(`https://capstone-wqf7.onrender.com/users/update/${this.selectedUser.usersID}`, this.selectedUser)
-        .then(() => {
-          alert('User updated successfully!');
-          this.closeUpdateModal();
-          this.fetchUsers(); 
-        })
-        .catch(error => {
-          console.error('Error updating user:', error);
-        });
-    },
-    openDeleteModal(user) {
-      this.selectedUser = user;
-      this.showDeleteModal = true;
-    },
-    closeDeleteModal() {
-      this.showDeleteModal = false;
-      this.selectedUser = null;
-    },
-    confirmDeleteUser() {
-      axios.delete(`https://capstone-wqf7.onrender.com/users/delete/${this.selectedUser.usersID}`)
-        .then(() => {
-          alert('User deleted successfully!');
-          this.closeDeleteModal();
-          this.fetchUsers();
-        })
-        .catch(error => {
-          console.error('Error deleting user:', error);
-        });
-    },
-    openDeleteProductModal(product) {
-      this.selectedProduct = product;
-      this.showDeleteProductModal = true;
-    },
-    closeDeleteProductModal() {
-      this.showDeleteProductModal = false;
-      this.selectedProduct = null;
-    },
-    confirmDeleteProduct() {
-      axios.delete(`https://capstone-wqf7.onrender.com/products/delete/${this.selectedProduct.prodID}`)
-        .then(() => {
-          alert('Product deleted successfully!');
-          this.closeDeleteProductModal();
-          this.fetchProducts(); 
-        })
-        .catch(error => {
-          console.error('Error deleting product:', error);
-        });
-    },
-    openAddProductModal() {
-      this.showAddProductModal = true;
-    },
-    closeAddProductModal() {
-      this.showAddProductModal = false;
-      this.resetNewProduct();
-    },
-    resetNewProduct() {
-      this.newProduct = {
-        name: '',
-        description: '',
-        material: '',
-        price: 0,
-        stock: 0,
-        image_url: '',
-      };
-    },
-
+  fetchProducts() {
+    axios.get('https://capstone-wqf7.onrender.com/products')
+      .then(response => {
+        this.products = response.data;
+      })
+      .catch(error => {
+        console.error('Error fetching products:', error);
+      });
+  },
+  fetchUsers() {
+    axios.get('https://capstone-wqf7.onrender.com/users')
+      .then(response => {
+        this.users = response.data;
+      })
+      .catch(error => {
+        console.error('Error fetching users:', error);
+      });
+  },
+  updateProduct(prodID) {
+    const product = this.products.find(p => p.prodID === prodID);
+    axios.patch(`https://capstone-wqf7.onrender.com/products/${prodID}`, product) 
+      .then(() => {
+        alert('Product updated successfully!');
+      })
+      .catch(error => {
+        console.error('Error updating product:', error);
+      });
+  },
+  openUpdateModal(user) {
+    this.selectedUser = { ...user };
+    this.showUpdateModal = true;
+  },
+  closeUpdateModal() {
+    this.showUpdateModal = false;
+    this.selectedUser = null;
+  },
+  submitUpdateUser() {
+    axios.put(`https://capstone-wqf7.onrender.com/users/${this.selectedUser.usersID}`, this.selectedUser) 
+      .then(() => {
+        alert('User updated successfully!');
+        this.closeUpdateModal();
+        this.fetchUsers(); 
+      })
+      .catch(error => {
+        console.error('Error updating user:', error);
+      });
+  },
+  openDeleteModal(user) {
+    this.selectedUser = user;
+    this.showDeleteModal = true;
+  },
+  closeDeleteModal() {
+    this.showDeleteModal = false;
+    this.selectedUser = null;
+  },
+  confirmDeleteUser() {
+    axios.delete(`https://capstone-wqf7.onrender.com/users/delete/${this.selectedUser.usersID}`)
+      .then(() => {
+        alert('User deleted successfully!');
+        this.closeDeleteModal();
+        this.fetchUsers();
+      })
+      .catch(error => {
+        console.error('Error deleting user:', error);
+      });
+  },
+  openDeleteProductModal(product) {
+    this.selectedProduct = product;
+    this.showDeleteProductModal = true;
+  },
+  closeDeleteProductModal() {
+    this.showDeleteProductModal = false;
+    this.selectedProduct = null;
+  },
+  confirmDeleteProduct() {
+    axios.delete(`https://capstone-wqf7.onrender.com/products/${this.selectedProduct.prodID}`) 
+      .then(() => {
+        alert('Product deleted successfully!');
+        this.closeDeleteProductModal();
+        this.fetchProducts(); 
+      })
+      .catch(error => {
+        console.error('Error deleting product:', error);
+      });
+  },
+  openAddProductModal() {
+    this.showAddProductModal = true;
+  },
+  closeAddProductModal() {
+    this.showAddProductModal = false;
+    this.resetNewProduct();
+  },
+  resetNewProduct() {
+    this.newProduct = {
+      name: '',
+      description: '',
+      material: '',
+      price: 0,
+      stock: 0,
+      image_url: '',
+    };
+  },
+  addProduct() {  
+    axios.post('https://capstone-wqf7.onrender.com/products', this.newProduct)
+      .then(() => {
+        alert('Product added successfully!');
+        this.closeAddProductModal();
+        this.fetchProducts();
+      })
+      .catch(error => {
+        console.error('Error adding product:', error);
+      });
+  }
   },
   mounted() {
     this.fetchProducts();

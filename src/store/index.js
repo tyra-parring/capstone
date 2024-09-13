@@ -166,7 +166,7 @@ export default createStore({
 
     async addProduct({ dispatch }, payload) {
       try {
-        await axios.post(`${hostedData}product/add`, payload);
+        await axios.post(`${hostedData}products`, payload);  
         dispatch('fetchProducts');
       } catch (error) {
         console.error("Error adding product:", error);
@@ -175,7 +175,7 @@ export default createStore({
 
     async updateProduct({ dispatch }, payload) {
       try {
-        await axios.patch(`${hostedData}product/update/${payload.prodID}`, payload);
+        await axios.patch(`${hostedData}products/${payload.prodID}`, payload); 
         dispatch('fetchProducts');
       } catch (error) {
         console.error("Error updating product:", error);
