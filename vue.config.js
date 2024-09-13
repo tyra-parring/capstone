@@ -9,4 +9,7 @@ module.exports = defineConfig({
       },
     },
   },
+  devServer: {
+    proxy: 'https://capstone-wqf7.onrender.com',
+  },
 })

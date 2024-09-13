@@ -1,8 +1,11 @@
 import { createStore } from 'vuex';
 import axios from 'axios';
-
+// import VueCookies from 'vue-cookies';
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
+// import {useCookies} from 'vue-cookies';
 const hostedData = "https://capstone-wqf7.onrender.com/";
-
+/*eslint-disable */
 export default createStore({
   state: {
     products: [],
@@ -133,15 +136,31 @@ export default createStore({
       }
     },
 
-    async register({ commit }, payload) {
+    // async register({ commit }, payload) {
+    //   try {
+    //     const response = await axios.post(`${hostedData}user/register`, payload);
+    //     if (response.status === 200) {
+    //       commit('SET_USER', response.data);
+    //     }
+    //   } catch (error) {
+    //     commit('SET_ERROR', error.message);
+    //     console.error("Error registering user:", error);
+    //   }
+    // },
+    async register({ commit }, user) {
       try {
-        const response = await axios.post(`${hostedData}user/register`, payload);
-        if (response.status === 200) {
-          commit('SET_USER', response.data);
+        const { data } = await (await axios.post(`${hostedData}user/register`, user)).data
+        console.log('newdata'+data.message)
+        if (data.message){
+          toast("User Added Successfully", {
+            theme: "dark",
+            type: "default",
+            position: "top-center",
+            dangerouslyHTMLString: true
+          })
         }
       } catch (error) {
-        commit('SET_ERROR', error.message);
-        console.error("Error registering user:", error);
+        console.log(error)
       }
     },
 
@@ -169,6 +188,40 @@ export default createStore({
         dispatch('fetchProducts');
       } catch (error) {
         console.error("Error deleting product:", error);
+      }
+    },
+
+    // async loginUser({ commit }, info) {
+    //   try {
+    //     let response = await axios.post(`${hostedData}user/login`, {
+    //       userEmail: info.userEmail,
+    //       userPass: info.userPass
+    //     });
+    //     let { data } = response;
+    //     console.log(data);
+    //     VueCookies.set('token', data.token);
+    //     if (data.message) {
+    //       console.log("Logged In Successfully");
+    //     }
+    //     commit('SET_USER', data);
+    //   } catch (error) {
+    //     commit('SET_ERROR', error.message);
+    //     console.error("Error logging in user:", error);
+    //   }
+    // }
+    async loginUser({ commit }, info) {
+      console.log(info);
+      let { data } = await axios.post(`${hostedData}user/login`, info);
+      commit('clearUser');
+      console.log(data);
+      $cookies.set('token', data.token);
+      if (data.message) {
+        toast("Logged In Successfully", {
+          "theme": "dark",
+          "type": "default",
+          "position": "top-center",
+          "dangerouslyHTMLString": true
+        });
       }
     },
   },

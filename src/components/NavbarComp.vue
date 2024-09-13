@@ -22,7 +22,7 @@
               <router-link class="nav-link" to="/contact">Contact Us</router-link>
             </li>
             <li class="nav-item" >
-              <router-link class="nav-link" to="/admin" v-if="isAdmin">
+              <router-link class="nav-link" to="/admin" >
                 Admin
               </router-link>
               <!-- <span v-else>No admin access</span> -->
@@ -64,8 +64,8 @@ export default {
   name: 'NavbarComp',
   data() {
     return {
-      isLoggedIn: false, 
-      isAdmin: false,
+      // isLoggedIn: false, 
+      // isAdmin: false,
       searchQuery: '',
       sortBy: 'price-asc',
       products: []

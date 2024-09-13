@@ -16,9 +16,9 @@
                 <button @click="addToCart(product)">
                   <span class="text">Add to Cart</span>
                 </button>
-                <router-link to="/product/:id" class="router-link">
+                <button class="button">
                   <span class="text">View More</span>
-                </router-link>
+                </button>
               </div>
             </div>
           </div>
