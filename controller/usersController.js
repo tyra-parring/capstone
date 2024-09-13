@@ -96,10 +96,11 @@ const updateUser = async (req, res) => {
 };
 
 const loginUser = async (req, res) => {
-    res.json({
-        message: 'You logged in successfully',
-        token: req.body.token
-    })
-}
+  res.header('Set-Cookie', `authToken=${req.body.token}; Max-Age=3600000; Secure; SameSite=Strict`);
+  res.json({
+    message: 'You logged in successfully',
+    token: req.body.token
+  });
+};
 
 export { getUsers, getUser, insertUser, deleteUser, updateUser, loginUser};
